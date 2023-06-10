@@ -1,38 +1,41 @@
 local plugins = {
   {
+    "jose-elias-alvarez/typescript.nvim",
+  },
+  {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
   {
     "nvim-telescope/telescope-project.nvim",
-    config = function ()
-      require'telescope'.load_extension('project')
+    config = function()
+      require("telescope").load_extension "project"
 
-      require('telescope').setup {
+      require("telescope").setup {
         extensions = {
           project = {
             base_dirs = {
-              '~/Storage/GitHub/',
+              "~/Storage/GitHub/",
             },
             hidden_files = true, -- default: false
             theme = "dropdown",
             order_by = "asc",
             search_by = "title",
             sync_with_nvim_tree = true, -- default false
-          }
-        }
+          },
+        },
       }
-    end
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        -- defaults 
+        -- defaults
         "vim",
         "lua",
 
-        -- web dev 
+        -- web dev
         "html",
         "css",
         "javascript",
@@ -43,7 +46,7 @@ local plugins = {
 
         -- low level
         "c",
-        "zig"
+        "zig",
       },
     },
   },
@@ -67,23 +70,24 @@ local plugins = {
     build = ":MasonUpdate",
     opts = {
       ensure_installed = {
-        "eslint-lsp",
+        "eslint_d",
         "typescript-language-server",
         "angular-language-server",
         "lua-language-server",
         "html-lsp",
-        "prettier",
-        "stylua"
+        "prettierd",
+        "stylua",
+        "json-lsp",
       },
     },
   },
   {
     "junegunn/gv.vim",
-    lazy = false
+    lazy = false,
   },
   {
     "tpope/vim-fugitive",
-    lazy = false
+    lazy = false,
   },
   {
     "iamcco/markdown-preview.nvim",
