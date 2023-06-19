@@ -1,4 +1,4 @@
-vim.opt.colorcolumn = "120"
+-- vim.opt.colorcolumn = "120"
 
 vim.api.nvim_set_keymap(
   "n",
@@ -9,3 +9,4 @@ vim.api.nvim_set_keymap(
 
 vim.opt.listchars = { space = "·" }
 vim.opt.list = true
+--vim.wo.wrap = false

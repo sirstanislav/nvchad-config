@@ -1,18 +1,26 @@
 local plugins = {
-  --typescript-language-server
-  {
-    "jose-elias-alvarez/typescript.nvim",
-  },
-
   --junp between tmux and vim panes
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
+  --heighleight blocks of code
+  {
+    "HampusHauffman/block.nvim",
+    config = function()
+      require("block").setup()
+    end,
+    lazy = false,
+  },
+  -- SnipsCreate of code
+  {
+    "Sanix-Darker/snips.nvim",
+    config = true,
+    cmd = { "SnipsCreate" }, -- optional, make the plugin loads at cmd executed
+  },
 
   {
     "neovim/nvim-lspconfig",
-
     dependencies = {
       "jose-elias-alvarez/null-ls.nvim",
       config = function()
@@ -39,6 +47,7 @@ local plugins = {
         "prettierd",
         "stylua",
         "json-lsp",
+        "css-lsp",
       },
     },
   },
@@ -53,6 +62,11 @@ local plugins = {
     lazy = false,
   },
 
+  {
+    "rbong/vim-flog",
+    lazy = false,
+  },
+  -- Launch http server to preview Markdown
   {
     "iamcco/markdown-preview.nvim",
     lazy = false,
