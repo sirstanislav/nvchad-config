@@ -1,12 +1,12 @@
 local M = {}
 
--- M.general = {
---   n = {
---     ["C-h"] = { "<cmd> TmuxNavigateLeft<CR>", "window left" },
---     ["C-l"] = { "<cmd> TmuxNavigateRight<CR>", "window right" },
---     ["C-j"] = { "<cmd> TmuxNavigateDown<CR>", "window down" },
---     ["C-k"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
---   }
--- }
+M.general = {
+  n = {
+    ["<leader>ft"] = {
+      "<cmd> FloatermNew --height=0.9 --width=0.9 <CR>",
+      "New float term window",
+    },
+  },
+}
 
 return M

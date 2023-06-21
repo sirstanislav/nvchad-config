@@ -1,4 +1,9 @@
 local plugins = {
+
+  {
+    "jose-elias-alvarez/typescript.nvim",
+  },
+
   --junp between tmux and vim panes
   {
     "christoomey/vim-tmux-navigator",
@@ -12,6 +17,12 @@ local plugins = {
     end,
     lazy = false,
   },
+
+  {
+    "voldikss/vim-floaterm",
+    lazy = false,
+  },
+
   -- SnipsCreate of code
   {
     "Sanix-Darker/snips.nvim",

@@ -7,7 +7,7 @@ local sources = {
   null_ls.builtins.formatting.stylua,
   null_ls.builtins.formatting.eslint_d,
   null_ls.builtins.diagnostics.shellcheck,
-  --require "typescript.extensions.null-ls.code-actions",
+  require "typescript.extensions.null-ls.code-actions",
 }
 
 require("null-ls").setup {
