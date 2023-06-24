@@ -19,4 +19,11 @@ M.override = {
   },
 }
 
+M.add = {
+  FloatermBorder = {
+    bg = "#1a1b26",
+    fg = "cyan",
+  },
+}
+
 return M
