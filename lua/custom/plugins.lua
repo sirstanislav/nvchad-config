@@ -4,22 +4,17 @@ local plugins = {
     "jose-elias-alvarez/typescript.nvim",
   },
 
-  --junp between tmux and vim panes
-  {
-    "christoomey/vim-tmux-navigator",
-    lazy = false,
-  },
+    --junp between tmux and vim panes
+    {
+      "christoomey/vim-tmux-navigator",
+      lazy = false,
+    },
   --heighleight blocks of code
   {
     "HampusHauffman/block.nvim",
     config = function()
       require("block").setup()
     end,
-    lazy = false,
-  },
-
-  {
-    "voldikss/vim-floaterm",
     lazy = false,
   },
 
