@@ -7,6 +7,10 @@ local sources = {
   null_ls.builtins.formatting.stylua,
   null_ls.builtins.formatting.eslint_d,
   null_ls.builtins.diagnostics.shellcheck,
+  null_ls.builtins.formatting.google_java_format,
+  null_ls.builtins.diagnostics.mypy,
+  null_ls.builtins.diagnostics.ruff,
+  null_ls.builtins.formatting.black,
   require "typescript.extensions.null-ls.code-actions",
 }
 
