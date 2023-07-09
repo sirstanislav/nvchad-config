@@ -36,6 +36,10 @@ M.dapui = {
     ["<leader>du"] = {
       function()
         require("dapui").toggle()
+        local api = require "nvim-tree.api"
+        if api.tree.open then
+          api.tree.close()
+        end
       end,
       "Dap UI",
     },

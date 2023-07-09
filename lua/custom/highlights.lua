@@ -54,7 +54,7 @@ M.override = {
   },
 
   WinSeparator = {
-    fg = "#1a1b26",
+    fg = "orange",
   },
 }
 
