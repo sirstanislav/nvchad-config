@@ -3,48 +3,9 @@ local plugins = {
   {
     "rcarriga/nvim-dap-ui",
     config = function()
-      local dap = require "dap"
-      local dapui = require "dapui"
-      dapui.setup {
-        layouts = {
-          {
-            elements = {
-              {
-                id = "scopes",
-                size = 0.25,
-              },
-              {
-                id = "breakpoints",
-                size = 0.25,
-              },
-              {
-                id = "stacks",
-                size = 0.25,
-              },
-              {
-                id = "watches",
-                size = 0.25,
-              },
-            },
-            position = "left",
-            size = 60,
-          },
-          {
-            elements = {
-              {
-                id = "repl",
-                size = 0.5,
-              },
-              {
-                id = "console",
-                size = 0.5,
-              },
-            },
-            position = "bottom",
-            size = 13,
-          },
-        },
-      }
+      require "custom.configs.dapui"
+      require("core.utils").load_mappings "dapui"
+      -- local dap = require "dap"
       -- dap.listeners.after.event_initialized["dapui_config"] = function()
       --   dapui.open {}
       -- end
@@ -54,7 +15,6 @@ local plugins = {
       -- dap.listeners.before.event_exited["dapui_config"] = function()
       --   dapui.close {}
       -- end
-      require("core.utils").load_mappings "dapui"
     end,
 
     dependencies = {
@@ -89,9 +49,9 @@ local plugins = {
       -- "mfussenegger/nvim-dap",
       "rcarriga/nvim-dap-ui",
     },
-    config = function()
-      require "custom.configs.java.jdtls"
-    end,
+    -- config = function()
+    --   require "~/.config/nvim/ftplugin.java"
+    -- end,
   },
 
   {
@@ -183,6 +143,35 @@ local plugins = {
     lazy = false,
     config = function()
       vim.fn["mkdp#util#install"]()
+    end,
+  },
+
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+    config = function()
+      require("telescope").setup {
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+              -- even more opts
+            },
+
+            -- pseudo code / specification for writing custom displays, like the one
+            -- for "codeactions"
+            -- specific_opts = {
+            --   [kind] = {
+            --     make_indexed = function(items) -> indexed_items, width,
+            --     make_displayer = function(widths) -> displayer
+            --     make_display = function(displayer) -> function(e)
+            --     make_ordinal = function(e) -> string
+            --   },
+            --   -- for example to disable the custom builtin "codeactions" display
+            --      do the following
+            --   codeactions = false,
+            -- }
+          },
+        },
+      }
     end,
   },
 

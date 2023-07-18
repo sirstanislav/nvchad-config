@@ -6,7 +6,7 @@ M.override = {
   NvimTreeOpenedFolderName = { fg = "orange" },
 
   NvimTreeWinSeparator = {
-    fg = "#1a1b26",
+    fg = "cyan",
     bg = "#1a1b26",
   },
 
@@ -54,7 +54,7 @@ M.override = {
   },
 
   WinSeparator = {
-    fg = "orange",
+    fg = "cyan",
   },
 }
 

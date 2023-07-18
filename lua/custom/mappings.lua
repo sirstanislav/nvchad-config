@@ -35,11 +35,11 @@ M.dapui = {
   n = {
     ["<leader>du"] = {
       function()
-        require("dapui").toggle()
-        local api = require "nvim-tree.api"
-        if api.tree.open then
-          api.tree.close()
-        end
+        require("dapui").toggle { reset = true }
+        -- local api = require "nvim-tree.api"
+        -- if api.tree.open then
+        --   api.tree.close()
+        -- end
       end,
       "Dap UI",
     },
@@ -79,7 +79,13 @@ M.dap = {
     },
     ["<leader>dc"] = {
       function()
+        -- require("jdtls").update_project_config()
+        require("dapui").open { reset = true }
         require("dap").continue()
+        -- local api = require "nvim-tree.api"
+        -- if api.tree.open then
+        --   api.tree.close()
+        -- end
       end,
       "Continue",
     },
