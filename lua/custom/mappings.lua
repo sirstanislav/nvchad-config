@@ -1,11 +1,22 @@
 local M = {}
 
 M.general = {
+
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<M-p>"] = {
       ":lua require'telescope'.extensions.project.project{} <CR>",
       "Project manager",
+    },
+    ["<M-t>"] = { "<cmd> tabnext <CR>", "Go to next tab" },
+    ["<M-b>"] = { "<cmd> tabprevious <CR>", "Go to previous tab" },
+    ["<M-x>"] = { "<cmd> tabclose <CR>", "Close tab" },
+    ["<M-t>n"] = { "<cmd> tabnew <CR>", "New tab" },
+    ["<C-s>"] = { "<cmd> w | mksession! <CR>", "Save file" },
+    ["<leader>s"] = { "<cmd> lua vim.lsp.buf.signature_help() <CR>", "Signature help" },
+    ["K"] = {
+      ":lua vim.lsp.buf.hover() <CR>",
+      "LSP hover",
     },
     -- ["<leader>tr"] = {
     --   function()
@@ -26,12 +37,19 @@ M.tabufline = {
       end,
       "Close buffer",
     },
-    ["<S-M-w>"] = { "<cmd> %bd | e# <CR>", "Close others buffers" },
+    ["<S-M-w>"] = {
+      function()
+        require("nvchad_ui.tabufline").closeOtherBufs()
+      end,
+      "Close other buffers",
+    },
+    -- ["<S-M-w>"] = { "<cmd> %bd | e# <CR>", "Close others buffers" },
   },
 }
 
 M.dapui = {
   plugin = true,
+
   n = {
     ["<leader>du"] = {
       function()

@@ -1,5 +1,4 @@
 local plugins = {
-
   {
     "rcarriga/nvim-dap-ui",
     config = function()
@@ -16,7 +15,6 @@ local plugins = {
       --   dapui.close {}
       -- end
     end,
-
     dependencies = {
       "mfussenegger/nvim-dap",
     },
@@ -46,24 +44,21 @@ local plugins = {
     "mfussenegger/nvim-jdtls",
     ft = "java",
     dependencies = {
-      -- "mfussenegger/nvim-dap",
       "rcarriga/nvim-dap-ui",
     },
-    -- config = function()
-    --   require "~/.config/nvim/ftplugin.java"
-    -- end,
   },
 
   {
     "jose-elias-alvarez/typescript.nvim",
   },
 
-  --junp between tmux and vim panes
+  --Junp between tmux and vim panes
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
-  --heighleight blocks of code
+
+  --Heighleight blocks of code
   {
     "HampusHauffman/block.nvim",
     config = function()

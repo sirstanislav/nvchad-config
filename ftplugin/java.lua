@@ -4,7 +4,10 @@ local opts = { noremap = true, silent = true }
 local root_markers = { "gradlew", "mvnw", ".git", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+local cmp_nvim_lsp = require "cmp_nvim_lsp"
+local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
 
 function nnoremap(rhs, lhs, bufopts, desc)
   bufopts.desc = desc
@@ -20,7 +23,6 @@ local on_attach = function(client, bufnr)
   require("jdtls.dap").setup_dap_main_class_configs()
   require("telescope").load_extension "ui-select"
 
-  --Auto formatting on save
   if client.supports_method "textDocument/formatting" then
     vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -46,10 +48,17 @@ local on_attach = function(client, bufnr)
   )
 end
 
+local handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+}
+
 local config = {
+  handlers = handlers,
   flags = {
     debounce_text_changes = 80,
   },
+  capabilities = capabilities,
   on_attach = on_attach,
   root_dir = root_dir,
   cmd = {

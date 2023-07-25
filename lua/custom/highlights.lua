@@ -11,6 +11,7 @@ M.override = {
   },
 
   NvimTreeCursorLine = {
+    fg = "orange",
     bg = "#1a1b26",
   },
 
