@@ -1,4 +1,11 @@
+local overrides = require "custom.overrides"
+
 local plugins = {
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = overrides.gitsigns,
+  },
+
   {
     "rcarriga/nvim-dap-ui",
     config = function()
