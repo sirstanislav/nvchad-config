@@ -75,9 +75,9 @@ local config = {
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
     "-jar",
-    vim.fn.glob "/opt/homebrew/Cellar/jdtls/1.25.0/libexec/plugins/org.eclipse.equinox.launcher_*.jar",
+    vim.fn.glob "/opt/homebrew/Cellar/jdtls/1.26.0/libexec/plugins/org.eclipse.equinox.launcher_*.jar",
     "-configuration",
-    "/opt/homebrew/Cellar/jdtls/1.25.0/libexec/config_mac",
+    "/opt/homebrew/Cellar/jdtls/1.26.0/libexec/config_mac",
     "-data",
     workspace_folder,
   },
@@ -86,7 +86,7 @@ local config = {
       format = {
         enabled = true,
         settings = {
-          url = "~/.local/share/eclipse/eclipse-java-google-style.xml",
+          url = "~/Storage/Java/Style/eclipse-java-google-style.xml",
         },
       },
       signatureHelp = { enabled = true },
@@ -128,19 +128,19 @@ local config = {
         runtimes = {
           {
             name = "JavaSE-20",
-            path = "/Users/ctacbarada/Library/Java/JavaVirtualMachines/openjdk-20.0.1/Contents/Home",
+            path = "/Users/ctacbarada/Library/Java/JavaVirtualMachines/openjdk-20.0.2/Contents/Home",
           },
           {
             name = "JavaSE-17",
-            path = "/Users/ctacbarada/Library/Java/JavaVirtualMachines/corretto-17.0.7/Contents/Home",
+            path = "/Users/ctacbarada/Library/Java/JavaVirtualMachines/corretto-17.0.8/Contents/Home",
           },
           {
             name = "JavaSE-11",
-            path = "/Users/ctacbarada/Library/Java/JavaVirtualMachines/corretto-11.0.19/Contents/Home",
+            path = "/Users/ctacbarada/Library/Java/JavaVirtualMachines/corretto-11.0.20/Contents/Home",
           },
           {
             name = "JavaSE-1.8",
-            path = "/Users/ctacbarada/Library/Java/JavaVirtualMachines/corretto-1.8.0_372/Contents/Home",
+            path = "/Users/ctacbarada/Library/Java/JavaVirtualMachines/corretto-1.8.0_382/Contents/Home",
           },
         },
       },
@@ -169,14 +169,14 @@ vim.opt.shiftwidth = 4
 
 local bundles = {
   vim.fn.glob(
-    "/Users/ctacbarada/Storage/GitHub/Java/Debugging/Java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
+    "/Users/ctacbarada/Storage/Java/Debugging/Java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
     1
   ),
 }
 
 vim.list_extend(
   bundles,
-  vim.split(vim.fn.glob("/Users/ctacbarada/Storage/GitHub/Java/Debugging/vscode-java-test/server/*.jar", 1), "\n")
+  vim.split(vim.fn.glob("/Users/ctacbarada/Storage/Java/Debugging/vscode-java-test/server/*.jar", 1), "\n")
 )
 
 config["init_options"] = {
