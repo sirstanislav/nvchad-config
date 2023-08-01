@@ -47,6 +47,15 @@ M.tabufline = {
   },
 }
 
+M.git = {
+  n = {
+    ["<leader>gf"] = {
+      "<cmd> Flogsplit <CR>",
+      "Git branch view",
+    },
+  },
+}
+
 M.dapui = {
   plugin = true,
 

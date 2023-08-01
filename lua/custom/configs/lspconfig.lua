@@ -6,7 +6,6 @@ local lspconfig = require "lspconfig"
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts = opts or {}
-  opts.border = opts.border or "single"
   opts.max_width = opts.max_width or 120
   opts.max_height = opts.max_height or 20
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
@@ -15,6 +14,10 @@ end
 local handlers = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+}
+
+lspconfig.lua_ls.setup {
+  handlers = handlers,
 }
 
 lspconfig.html.setup {

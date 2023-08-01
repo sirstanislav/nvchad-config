@@ -14,8 +14,8 @@ vim.opt.fillchars = {
 }
 --vim.wo.wrap = false
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-  callback = function()
-    vim.cmd "mksession!"
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   -- callback = function()
+--     vim.cmd "mksession!"
+--   end,
+-- })
