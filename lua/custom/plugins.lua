@@ -2,6 +2,11 @@ local overrides = require "custom.overrides"
 
 local plugins = {
   {
+    "sindrets/diffview.nvim",
+    lazy = false,
+  },
+
+  {
     "lewis6991/gitsigns.nvim",
     opts = overrides.gitsigns,
   },

@@ -53,6 +53,14 @@ M.git = {
       "<cmd> Flogsplit <CR>",
       "Git branch view",
     },
+    ["<leader>gh"] = {
+      "<cmd> DiffviewFileHistory <CR>",
+      "Open file history",
+    },
+    ["<leader>gc"] = {
+      "<cmd> DiffviewClose <CR>",
+      "Close file history",
+    },
   },
 }
 
