@@ -1,23 +1,15 @@
 local M = {}
 
 M.general = {
-
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    ["<M-p>"] = {
+    ["<leader>op"] = {
       ":lua require'telescope'.extensions.project.project{} <CR>",
       "Project manager",
     },
-    ["<M-t>"] = { "<cmd> tabnext <CR>", "Go to next tab" },
-    ["<M-b>"] = { "<cmd> tabprevious <CR>", "Go to previous tab" },
-    ["<M-x>"] = { "<cmd> tabclose <CR>", "Close tab" },
-    ["<M-t>n"] = { "<cmd> tabnew <CR>", "New tab" },
     ["<C-s>"] = { "<cmd> w | mksession! <CR>", "Save file" },
-    ["<leader>s"] = { "<cmd> lua vim.lsp.buf.signature_help() <CR>", "Signature help" },
-    ["K"] = {
-      ":lua vim.lsp.buf.hover() <CR>",
-      "LSP hover",
-    },
+    ["S"] = { "<cmd> lua vim.lsp.buf.signature_help() <CR>", "Signature help" },
+    ["H"] = { ":lua vim.lsp.buf.hover() <CR>", "LSP hover" },
     -- ["<leader>tr"] = {
     --   function()
     --     require("base46").toggle_transparency()
@@ -30,43 +22,37 @@ M.general = {
 M.tabufline = {
   plugin = true,
   n = {
-    -- close buffer + hide terminal buffer
-    ["<M-w>"] = {
+    ["<A-Tab>"] = { "<cmd> tabnext <CR>", "Go to next tab" },
+    ["<A-p>"] = { "<cmd> tabprevious <CR>", "Go to previous tab" },
+    ["<A-c>"] = { "<cmd> tabclose <CR>", "Close tab" },
+    ["<A-n>"] = { "<cmd> tabnew <CR>", "New tab" },
+    ["<A-w>"] = {
       function()
         require("nvchad_ui.tabufline").close_buffer()
       end,
       "Close buffer",
     },
-    ["<S-M-w>"] = {
+    ["<S-A-w>"] = {
       function()
         require("nvchad_ui.tabufline").closeOtherBufs()
       end,
       "Close other buffers",
     },
-    -- ["<S-M-w>"] = { "<cmd> %bd | e# <CR>", "Close others buffers" },
   },
 }
 
 M.git = {
   n = {
-    ["<leader>gf"] = {
-      "<cmd> Flogsplit <CR>",
-      "Git branch view",
-    },
-    ["<leader>gh"] = {
-      "<cmd> DiffviewFileHistory <CR>",
-      "Open file history",
-    },
-    ["<leader>gc"] = {
-      "<cmd> DiffviewClose <CR>",
-      "Close file history",
-    },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+    ["<leader>gt"] = { "<cmd> DiffviewToggleFiles <CR>", "Diffview toogle files" },
+    ["<leader>gf"] = { "<cmd> Flogsplit <CR>", "Git branch view" },
+    ["<leader>gh"] = { "<cmd> DiffviewFileHistory <CR>", "Open file history" },
+    ["<leader>gc"] = { "<cmd> DiffviewClose <CR>", "Close file history" },
   },
 }
 
 M.dapui = {
   plugin = true,
-
   n = {
     ["<leader>du"] = {
       function()
