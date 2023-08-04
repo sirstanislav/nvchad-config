@@ -172,7 +172,7 @@ vim.opt.shiftwidth = 4
 
 local bundles = {
   vim.fn.glob(
-    "/Users/ctacbarada/Storage/Java/Debugging/Java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
+    "/Users/ctacbarada/Storage/Java/Debugging/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.47.0.jar",
     1
   ),
 }
