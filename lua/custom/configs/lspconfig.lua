@@ -17,7 +17,17 @@ local handlers = {
 }
 
 lspconfig.lua_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "lua" },
   handlers = handlers,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
 }
 
 lspconfig.html.setup {

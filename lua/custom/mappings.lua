@@ -2,7 +2,7 @@ local M = {}
 
 M.general = {
   n = {
-    [";"] = { ":", "enter command mode", opts = { nowait = true } },
+    [";"] = { ":", "Enter command mode", opts = { nowait = true } },
     ["<leader>op"] = {
       ":lua require'telescope'.extensions.project.project{} <CR>",
       "Project manager",
@@ -17,6 +17,10 @@ M.general = {
     --   "󰂵 Toggle transparency",
     -- },
   },
+}
+
+M.lspconfig = {
+  plugin = true,
 }
 
 M.tabufline = {
