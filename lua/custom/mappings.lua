@@ -57,14 +57,21 @@ M.git = {
 
 M.dapui = {
   plugin = true,
+  t = {
+    ["<leader>du"] = {
+      function()
+        require("dapui").toggle { reset = true }
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", true, false, true), "n", false)
+      end,
+      "Dap UI",
+    },
+  },
+
   n = {
     ["<leader>du"] = {
       function()
         require("dapui").toggle { reset = true }
-        -- local api = require "nvim-tree.api"
-        -- if api.tree.open then
-        --   api.tree.close()
-        -- end
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", true, false, true), "n", false)
       end,
       "Dap UI",
     },
@@ -89,6 +96,19 @@ M.dapui = {
 
 M.dap = {
   plugin = true,
+
+  t = {
+    ["<leader>dc"] = {
+      function()
+        -- require("jdtls").update_project_config()
+        require("dapui").open { reset = true }
+        require("dap").continue()
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", true, false, true), "n", false)
+      end,
+      "Continue",
+    },
+  },
+
   n = {
     ["<leader>dB"] = {
       function()
@@ -107,10 +127,7 @@ M.dap = {
         -- require("jdtls").update_project_config()
         require("dapui").open { reset = true }
         require("dap").continue()
-        -- local api = require "nvim-tree.api"
-        -- if api.tree.open then
-        --   api.tree.close()
-        -- end
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", true, false, true), "n", false)
       end,
       "Continue",
     },
