@@ -2,8 +2,6 @@ local options = {
   filters = {
     dotfiles = false,
     exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
-    --exclude DS_Store files
-    custom = { ".DS_Store" },
   },
   disable_netrw = true,
   hijack_netrw = true,
@@ -15,7 +13,7 @@ local options = {
     update_root = false,
   },
   view = {
-    adaptive_size = true,
+    adaptive_size = false,
     side = "left",
     width = 30,
     preserve_window_proportions = true,
@@ -29,23 +27,16 @@ local options = {
   },
   actions = {
     open_file = {
-      resize_window = false,
+      resize_window = true,
     },
   },
   renderer = {
     root_folder_label = false,
     highlight_git = false,
-    highlight_opened_files = "true",
+    highlight_opened_files = "none",
 
     indent_markers = {
-      enable = true,
-      icons = {
-        corner = "·",
-        item = "·",
-        bottom = "·",
-        edge = "·",
-        none = "·",
-      },
+      enable = false,
     },
 
     icons = {
