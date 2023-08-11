@@ -12,6 +12,27 @@ local plugins = {
   },
 
   {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.nvim_cmp,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = overrides.nvim_tree,
+  },
+
+  {
+    "Jezda1337/nvim-html-css",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("html-css"):setup()
+    end,
+  },
+
+  {
     "NvChad/nvterm",
     config = function()
       require("nvterm").setup {
@@ -116,7 +137,8 @@ local plugins = {
   {
     "Sanix-Darker/snips.nvim",
     config = true,
-    cmd = { "SnipsCreate" }, -- optional, make the plugin loads at cmd executed
+    -- optional, make the plugin loads at cmd executed
+    cmd = { "SnipsCreate" },
   },
 
   {

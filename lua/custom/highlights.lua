@@ -3,7 +3,7 @@ local M = {}
 M.override = {
   NvimTreeNormal = { bg = "#1a1b26" },
   NvimTreeNormalNC = { bg = "#1a1b26" },
-  NvimTreeOpenedFolderName = { fg = "orange" },
+  NvimTreeOpenedFolderName = { fg = "cyan" },
 
   NvimTreeWinSeparator = {
     fg = "cyan",

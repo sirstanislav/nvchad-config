@@ -37,13 +37,13 @@ M.tabufline = {
     ["<A-n>"] = { "<cmd> tabnew <CR>", "New tab" },
     ["<A-w>"] = {
       function()
-        require("nvchad_ui.tabufline").close_buffer()
+        require("nvchad.tabufline").close_buffer()
       end,
       "Close buffer",
     },
     ["<S-A-w>"] = {
       function()
-        require("nvchad_ui.tabufline").closeOtherBufs()
+        require("nvchad.tabufline").closeOtherBufs()
       end,
       "Close other buffers",
     },
