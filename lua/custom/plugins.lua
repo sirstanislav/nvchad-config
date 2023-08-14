@@ -1,4 +1,4 @@
-local overrides = require "custom.overrides"
+local override = require "custom.override"
 
 local plugins = {
   {
@@ -8,28 +8,12 @@ local plugins = {
 
   {
     "lewis6991/gitsigns.nvim",
-    opts = overrides.gitsigns,
-  },
-
-  {
-    "hrsh7th/nvim-cmp",
-    opts = overrides.nvim_cmp,
+    opts = override.gitsigns,
   },
 
   {
     "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvim_tree,
-  },
-
-  {
-    "Jezda1337/nvim-html-css",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("html-css"):setup()
-    end,
+    opts = override.nvim_tree,
   },
 
   {
