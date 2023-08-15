@@ -222,6 +222,11 @@ local plugins = {
   },
 
   {
+    "nvim-telescope/telescope.nvim",
+    opts = override.telescope,
+  },
+
+  {
     "nvim-telescope/telescope-project.nvim",
     config = function()
       require("telescope").load_extension "project"
