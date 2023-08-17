@@ -75,6 +75,25 @@ M.nvim_tree = {
   },
 }
 
+M.treesitter = {
+  ensure_installed = {
+    "vim",
+    "lua",
+
+    "html",
+    "css",
+    "javascript",
+    "typescript",
+    "tsx",
+    "json",
+    "vue",
+    "svelte",
+
+    "python",
+    "java",
+  },
+}
+
 M.telescope = {
   defaults = {
     prompt_prefix = "  ",
