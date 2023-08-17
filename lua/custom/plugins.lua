@@ -17,9 +17,23 @@ local plugins = {
   },
 
   {
+    "windwp/nvim-ts-autotag",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        autotag = {
+          enable = true,
+        },
+      }
+    end,
+    lazy = true,
+    event = "VeryLazy",
+  },
+
+  {
     "hrsh7th/nvim-cmp",
-    opts = override.nvim_cmp,
     dependencies = "Jezda1337/nvim-html-css",
+    opts = override.nvim_cmp,
   },
 
   {
@@ -207,20 +221,6 @@ local plugins = {
             require("telescope.themes").get_dropdown {
               -- even more opts
             },
-
-            -- pseudo code / specification for writing custom displays, like the one
-            -- for "codeactions"
-            -- specific_opts = {
-            --   [kind] = {
-            --     make_indexed = function(items) -> indexed_items, width,
-            --     make_displayer = function(widths) -> displayer
-            --     make_display = function(displayer) -> function(e)
-            --     make_ordinal = function(e) -> string
-            --   },
-            --   -- for example to disable the custom builtin "codeactions" display
-            --      do the following
-            --   codeactions = false,
-            -- }
           },
         },
       }
@@ -257,24 +257,7 @@ local plugins = {
   --code highlighting
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
-        "json",
-        "vue",
-        "svelte",
-
-        "python",
-        "java",
-      },
-    },
+    opts = override.treesitter,
   },
 }
 
