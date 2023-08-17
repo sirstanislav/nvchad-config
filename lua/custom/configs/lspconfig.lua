@@ -30,10 +30,37 @@ lspconfig.lua_ls.setup {
   },
 }
 
+local cmd = {
+  "ngserver",
+  "--stdio",
+  "--tsProbeLocations",
+  "./node_modules",
+  "--ngProbeLocations",
+  "./node_modules",
+}
+
+lspconfig.angularls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = cmd,
+  on_new_config = function(new_config, new_root_dir)
+    new_config.cmd = cmd
+  end,
+  filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+  handlers = handlers,
+}
+
 lspconfig.html.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "html" },
+  settings = {
+    css = {
+      lint = {
+        validProperties = {},
+      },
+    },
+  },
   handlers = handlers,
 }
 

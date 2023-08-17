@@ -17,6 +17,23 @@ local plugins = {
   },
 
   {
+    "hrsh7th/nvim-cmp",
+    opts = override.nvim_cmp,
+    dependencies = "Jezda1337/nvim-html-css",
+  },
+
+  {
+    "Jezda1337/nvim-html-css",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("html-css"):setup()
+    end,
+  },
+
+  {
     "NvChad/nvterm",
     config = function()
       require("nvterm").setup {
@@ -53,17 +70,6 @@ local plugins = {
     config = function()
       require "custom.configs.dapui"
       require("core.utils").load_mappings "dapui"
-      -- local dap = require "dap"
-      -- local dapui = require("dapui")
-      -- dap.listeners.after.event_initialized["dapui_config"] = function()
-      --   dapui.open {}
-      -- end
-      -- dap.listeners.before.event_terminated["dapui_config"] = function()
-      --   dapui.close {}
-      -- end
-      -- dap.listeners.before.event_exited["dapui_config"] = function()
-      --   dapui.close {}
-      -- end
     end,
     dependencies = {
       "mfussenegger/nvim-dap",
