@@ -19,21 +19,18 @@ local plugins = {
   {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require("nvim-treesitter.configs").setup {
-        autotag = {
-          enable = true,
-        },
-      }
-    end,
     lazy = true,
     event = "VeryLazy",
   },
 
   {
     "hrsh7th/nvim-cmp",
-    dependencies = "Jezda1337/nvim-html-css",
-    opts = override.nvim_cmp,
+    opts = function()
+      return require "custom.configs.cmp"
+    end,
+    config = function(_, opts)
+      require("cmp").setup(opts)
+    end,
   },
 
   {
@@ -42,6 +39,7 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
     },
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("html-css"):setup()
     end,
