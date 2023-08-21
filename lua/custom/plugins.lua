@@ -25,12 +25,7 @@ local plugins = {
 
   {
     "hrsh7th/nvim-cmp",
-    opts = function()
-      return require "custom.configs.cmp"
-    end,
-    config = function(_, opts)
-      require("cmp").setup(opts)
-    end,
+    opts = override.nvim_cmp,
   },
 
   {
@@ -257,6 +252,8 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     opts = override.treesitter,
   },
+
+  { "elgiano/nvim-treesitter-angular", lazy = false, branch = "topic/jsx-fix" },
 }
 
 return plugins

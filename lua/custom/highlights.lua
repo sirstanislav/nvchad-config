@@ -11,8 +11,12 @@ M.override = {
   },
 
   NvimTreeCursorLine = {
-    fg = "orange",
+    fg = "#ff9e64",
     bg = "#1a1b26",
+  },
+
+  NvimTreeOpenedFile = {
+    fg = "#f0a0c0",
   },
 
   TblineFill = {
@@ -51,7 +55,7 @@ M.override = {
   },
 
   FloatBorder = {
-    fg = "orange",
+    fg = "#ff9e64",
   },
 
   WinSeparator = {
@@ -59,6 +63,10 @@ M.override = {
   },
 }
 
-M.add = {}
+M.add = {
+  NvimTreeOpenedFile = {
+    fg = "#e58fe5",
+  },
+}
 
 return M

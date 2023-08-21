@@ -47,6 +47,7 @@ lspconfig.angularls.setup {
     new_config.cmd = cmd
   end,
   filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+  root_dir = lspconfig.util.root_pattern("angular.json", "project.json"),
   handlers = handlers,
 }
 
