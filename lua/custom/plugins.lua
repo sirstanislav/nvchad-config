@@ -25,7 +25,9 @@ local plugins = {
 
   {
     "hrsh7th/nvim-cmp",
-    opts = override.nvim_cmp,
+    opts = function()
+      require "custom.configs.cmp"
+    end,
   },
 
   {
