@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 local root_markers = { "gradlew", "mvnw", ".git", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
--- local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
 local cmp_nvim_lsp = require "cmp_nvim_lsp"
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
@@ -23,23 +23,25 @@ local on_attach = function(client, bufnr)
   require("jdtls.dap").setup_dap_main_class_configs()
   require("telescope").load_extension "ui-select"
 
-  -- if client.supports_method "textDocument/formatting" then
-  --   vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-  --   vim.api.nvim_create_autocmd("BufWritePre", {
-  --     group = augroup,
-  --     buffer = bufnr,
-  --     callback = function()
-  --       vim.lsp.buf.format { bufnr = bufnr }
-  --     end,
-  --   })
-  -- end
+  if client.supports_method "textDocument/formatting" then
+    vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format { bufnr = bufnr }
+      end,
+    })
+  end
 
   nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
   nnoremap("<space>df", jdtls.test_class, bufopts, "Test class")
   nnoremap("<space>dn", jdtls.test_nearest_method, bufopts, "Test method")
   nnoremap("<space>ec", jdtls.extract_constant, bufopts, "Extract constant")
   nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
-  nnoremap('<space>fm', function() vim.lsp.buf.format { async = true } end, bufopts, "Format file")
+  nnoremap("<space>fm", function()
+    vim.lsp.buf.format { async = true }
+  end, bufopts, "Format file")
 
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lc", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   vim.keymap.set(
@@ -89,7 +91,7 @@ local config = {
         enabled = true,
         settings = {
           url = "~/Storage/Java/Style/eclipse-java-google-style.xml",
-          profile = 'GoogleStyle',
+          profile = "GoogleStyle",
         },
       },
       signatureHelp = { enabled = true },
@@ -171,10 +173,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 local bundles = {
-  vim.fn.glob(
-    "/Users/ctacbarada/Storage/Java/Debugging/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.47.0.jar",
-    1
-  ),
+  vim.fn.glob "/Users/ctacbarada/Storage/Java/Debugging/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
 }
 
 vim.list_extend(

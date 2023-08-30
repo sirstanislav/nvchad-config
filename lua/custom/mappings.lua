@@ -105,7 +105,6 @@ M.dap = {
   t = {
     ["<leader>dc"] = {
       function()
-        -- require("jdtls").update_project_config()
         require("dapui").open { reset = true }
         require("dap").continue()
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", true, false, true), "n", false)
@@ -127,9 +126,14 @@ M.dap = {
       end,
       "Toggle Breakpoint",
     },
+    ["<leader>da"] = {
+      function()
+        require("dap").clear_breakpoints()
+      end,
+      "Clear breakpoints",
+    },
     ["<leader>dc"] = {
       function()
-        -- require("jdtls").update_project_config()
         require("dapui").open { reset = true }
         require("dap").continue()
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", true, false, true), "n", false)
@@ -168,6 +172,7 @@ M.dap = {
     },
     ["<leader>dl"] = {
       function()
+        require("dapui").open { layout = 2, reset = true }
         require("dap").run_last()
       end,
       "Run Last",
@@ -193,7 +198,8 @@ M.dap = {
 
     ["<leader>dr"] = {
       function()
-        require("dap").repl.toggle()
+        require("dapui").open { layout = 2, reset = true }
+        require("dap").continue()
       end,
       "Toggle REPL",
     },
@@ -217,6 +223,13 @@ M.dap = {
         require("dap.ui.widgets").hover()
       end,
       "Widgets",
+    },
+
+    ["<leader>dq"] = {
+      function()
+        require("dapui").close()
+      end,
+      "Close UI",
     },
   },
 }

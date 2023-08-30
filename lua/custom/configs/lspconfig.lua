@@ -19,7 +19,6 @@ local handlers = {
 lspconfig.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "lua" },
   handlers = handlers,
   settings = {
     Lua = {
@@ -46,7 +45,6 @@ lspconfig.angularls.setup {
   on_new_config = function(new_config, new_root_dir)
     new_config.cmd = cmd
   end,
-  filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
   root_dir = lspconfig.util.root_pattern("angular.json", "project.json"),
   handlers = handlers,
 }
@@ -54,7 +52,6 @@ lspconfig.angularls.setup {
 lspconfig.html.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "html" },
   settings = {
     css = {
       lint = {
@@ -68,7 +65,6 @@ lspconfig.html.setup {
 lspconfig.cssls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "css", "scss", "less" },
   handlers = handlers,
 }
 
@@ -100,25 +96,17 @@ require("typescript").setup {
 lspconfig.vuels.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "vue" },
   handlers = handlers,
 }
 
 lspconfig.jsonls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {
-    "json",
-    "jsonc",
-  },
   handlers = handlers,
 }
 
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {
-    "python",
-  },
   handlers = handlers,
 }
