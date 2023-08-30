@@ -1,6 +1,5 @@
 local home = os.getenv "HOME"
 local jdtls = require "jdtls"
-local opts = { noremap = true, silent = true }
 local root_markers = { "gradlew", "mvnw", ".git", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
@@ -9,14 +8,8 @@ local cmp_nvim_lsp = require "cmp_nvim_lsp"
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
 
-function nnoremap(rhs, lhs, bufopts, desc)
-  bufopts.desc = desc
-  vim.keymap.set("n", rhs, lhs, bufopts)
-end
-
 local on_attach = function(client, bufnr)
   local _, _ = pcall(vim.lsp.codelens.refresh)
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   require("jdtls").setup_dap { hotcodereplace = "auto" }
   require("jdtls.setup").add_commands()
@@ -34,22 +27,20 @@ local on_attach = function(client, bufnr)
     })
   end
 
-  nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
-  nnoremap("<space>df", jdtls.test_class, bufopts, "Test class")
-  nnoremap("<space>dn", jdtls.test_nearest_method, bufopts, "Test method")
-  nnoremap("<space>ec", jdtls.extract_constant, bufopts, "Extract constant")
-  nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
-  nnoremap("<space>fm", function()
-    vim.lsp.buf.format { async = true }
-  end, bufopts, "Format file")
+  function nnoremap(mode, rhs, lhs, bufopts, desc)
+    bufopts.desc = desc
+    vim.keymap.set(mode, rhs, lhs, bufopts)
+  end
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lc", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  vim.keymap.set(
-    "v",
-    "<space>em",
-    [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
-    { noremap = true, silent = true, buffer = bufnr, desc = "Extract method" }
-  )
+  nnoremap("n", "<leader>jo", jdtls.organize_imports, bufopts, "Organize imports")
+  nnoremap("n", "<leader>jc", jdtls.test_class, bufopts, "Test class")
+  nnoremap("n", "<leader>jt", jdtls.test_nearest_method, bufopts, "Test method")
+  nnoremap("n", "<leader>jc", jdtls.extract_constant, bufopts, "Extract constant")
+  nnoremap("v", "<leader>jm", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]], bufopts, "Extract method")
+  nnoremap("n", "<leader>jv", jdtls.extract_variable, bufopts, "Extract variable")
+  nnoremap("n", "<leader>lm", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", bufopts, "Lsp formatting")
+  nnoremap("n", "<leader>lc", "<cmd>lua vim.lsp.buf.code_action()<CR>", bufopts, "Lsp code action")
 end
 
 local handlers = {

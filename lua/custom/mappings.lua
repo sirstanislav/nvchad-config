@@ -1,5 +1,11 @@
 local M = {}
 
+M.disabled = {
+  n = {
+      ["K"] = "",
+  }
+}
+
 M.general = {
   n = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
@@ -8,8 +14,6 @@ M.general = {
       "Project manager",
     },
     ["<C-s>"] = { "<cmd> w | mksession! <CR>", "Save file" },
-    ["S"] = { "<cmd> lua vim.lsp.buf.signature_help() <CR>", "Signature help" },
-    ["H"] = { ":lua vim.lsp.buf.hover() <CR>", "LSP hover" },
     -- ["<leader>tr"] = {
     --   function()
     --     require("base46").toggle_transparency()
@@ -25,11 +29,24 @@ M.general = {
 }
 
 M.lspconfig = {
-  plugin = true,
+  n = {
+    ["<leader>lh"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "LSP hover",
+    },
+  },
+}
+
+M.telescope = {
+  n = {
+    ["<leader>te"] = { "<cmd> Telescope diagnostics <CR>", "Telescope errors" },
+    ["<leader>tr"] = { "<cmd> lua require('telescope.builtin').lsp_references() <CR>", "Telescope references" },
+  },
 }
 
 M.tabufline = {
-  plugin = true,
   n = {
     ["<A-Tab>"] = { "<cmd> tabnext <CR>", "Go to next tab" },
     ["<A-p>"] = { "<cmd> tabprevious <CR>", "Go to previous tab" },
@@ -61,7 +78,6 @@ M.git = {
 }
 
 M.dapui = {
-  plugin = true,
   t = {
     ["<leader>du"] = {
       function()
@@ -100,8 +116,6 @@ M.dapui = {
 }
 
 M.dap = {
-  plugin = true,
-
   t = {
     ["<leader>dc"] = {
       function()
